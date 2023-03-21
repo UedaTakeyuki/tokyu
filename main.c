@@ -5,6 +5,14 @@
 static void destroyWindowCb(GtkWidget* widget, GtkWidget* window);
 static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window);
 
+static gboolean once_cb(gpointer user_data){
+  // https://stackoverflow.com/a/21861770/11073131
+  WebKitWebView *webView = user_data;
+  webkit_web_view_run_javascript(webView, "window.scrollTo(230,100)", NULL, NULL, NULL);
+  g_print("once_cb done.\n");
+  return FALSE;
+}
+
 int main(int argc, char* argv[]){
   // Initialize GTK+
   gtk_init(&argc, &argv);
@@ -39,6 +47,15 @@ int main(int argc, char* argv[]){
   // change font size
   WebKitSettings *settings = webkit_web_view_get_settings (webView);
 	webkit_settings_set_default_font_size(settings, 32);
+
+  // horizontal scroll
+//  GtkAdjustment* adjustment = gtk_scrolled_window_get_hadjustment (webView);
+//  gtk_adjustment_set_value (adjustment, 32);
+  
+
+  // https://stackoverflow.com/a/21861770/11073131
+  //webkit_web_view_run_javascript(webView, "window.scrollTo(1500,500)", NULL, NULL, NULL);
+  g_timeout_add (5000, once_cb, webView);
 
   // Run the main GTK+ event loop
   gtk_main();
