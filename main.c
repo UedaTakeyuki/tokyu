@@ -8,8 +8,8 @@ static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window);
 static gboolean once_cb(gpointer user_data){
   // https://stackoverflow.com/a/21861770/11073131
   WebKitWebView *webView = user_data;
-//  webkit_web_view_run_javascript(webView, "window.scrollTo(230,100)", NULL, NULL, NULL);
-  webkit_web_view_run_javascript(webView, "location.reload()", NULL, NULL, NULL);
+//  webkit_web_view_run_javascript(webView, "location.reload()", NULL, NULL, NULL);
+  webkit_web_view_run_javascript(webView, "location.replace('https://www.tokyu.co.jp/unten2/unten.html')", NULL, NULL, NULL);
   g_print("once_cb done.\n");
 //  return FALSE;
 }

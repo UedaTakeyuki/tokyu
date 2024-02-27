@@ -12,8 +12,8 @@ Type=simple
 PIDFile=/var/run/tokyu.pid
 
 # https://jyn.jp/systemd-log-to-file/
-StandardOutput=append:/home/pi/weathermap/log
-StandardError=append:/home/pi/weathermap/log
+StandardOutput=append:/home/pi/tokyu/log
+StandardError=append:/home/pi/tokyu/log
 
 User=pi
 Environment=DISPLAY=:0
