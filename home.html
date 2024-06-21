@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p id="first">あほー</p>
+  </body>
+  <script>
+    var url="https://www.tokyu.co.jp/unten/unten2.json"
+    var unten_json
+    fetch(url, {mode: 'cors'})
+    .then(response => {
+      if (response.data.update == "ok") {
+        document.getElementById('first').innerText = "ボケ3"
+      }
+    })
+  </script>
+</html>
